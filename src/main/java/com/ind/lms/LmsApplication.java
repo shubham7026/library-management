@@ -1,38 +1,37 @@
 package com.ind.lms;
 
-import com.ind.lms.entity.Person;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.boot.CommandLineRunner;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 
-@SpringBootApplication
+
+
+
+@Slf4j
+@PropertySource(value = "classpath:application.yml")
+@SpringBootApplication /*these annotations include 3 more annotation
+                        @SpringBootAutoConfiguration
+                        @EnableAutoConfiguration
+                        @ComponentScan
+*/
 public class LmsApplication {
 
-	private final Logger logger = LoggerFactory.getLogger(LmsApplication.class);
-
-	public static void main(String[] args) {
-		SpringApplication.run(LmsApplication.class, args);
-		/*ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:beans.xml");
-
-		//System.out.println(person);
-
-		ConfigurableListableBeanFactory factory = ctx.getBeanFactory();
-		factory.registerSingleton("person",new Person());
-
-		Person person = ctx.getBean("person", Person.class);
-		System.out.println(person);*/
-
-	}
+    @Value("${spring.application.name}")
+    private static String greeting ;
+    public static void main(String[] args) {
+        log.info(greeting);
+        SpringApplication.run(LmsApplication.class, args);
+        System.out.println(StringUtils.substringBetween("FINACTV_B2CPIA_10_1_1","_","_"));
 
 
-	/*@Override
-	public void run(String... args) throws Exception {
-		logger.info("--LmsApplication---");
-	}*/
+        ;
+
+
+
+
+    }
 }

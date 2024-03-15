@@ -1,0 +1,49 @@
+
+spring:
+  application:
+    name: "Central Library Management"
+  jpa:
+    generate-ddl: false # it generates Schema if true
+  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/student_tracker
+    generate-unique-name: false
+    name: user
+    username: springstudent
+    password: springstudent
+#  sql:
+#    init:
+#      schema-locations:
+#        - temp.sql
+#      data-locations:
+#        - demo.sql
+
+
+server:
+  #servlet:
+    #context-path: /lms
+  port: 8085
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  server:
+    port: 8086
+
+logging:
+  level:
+    com:
+      ind:
+        lms: TRACE
+    org:
+      springframework:
+        security: TRACE
+        web: TRACE
+
+
+startup:
+  greeting: "Welcome to ${spring.application.name}."

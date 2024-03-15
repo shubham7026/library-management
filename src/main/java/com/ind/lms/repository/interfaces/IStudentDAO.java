@@ -1,4 +1,4 @@
-package com.ind.lms.repository;
+package com.ind.lms.repository.interfaces;
 
 import com.ind.lms.entity.Student;
 

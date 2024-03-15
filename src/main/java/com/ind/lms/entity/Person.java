@@ -1,21 +1,15 @@
 package com.ind.lms.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+@Builder
 public class Person {
-    String name ;
+    private String name ;
+    private String email;
+    private String phoneNo;
 
-
-    public Person(String name) {
-        this.name = name;
-    }
-
-    public Person() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
