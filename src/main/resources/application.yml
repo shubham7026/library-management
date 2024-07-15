@@ -1,31 +1,46 @@
-
+com:
+  lms:
+    demoProperty: demo
 spring:
+  profiles:
+    default: default
+    active: dev
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
   application:
     name: "Central Library Management"
   jpa:
-    generate-ddl: false # it generates Schema if true
+    generate-ddl: true # it generates Schema if true
   datasource:
 #    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/student_tracker
-    generate-unique-name: false
-    name: user
+    generate-unique-name: false # By default, the database name is randomly generated
+    name: user # provided database name, since we are using mySQL so we dont need it will be used if using h2 db
+    #jdbc:h2:mem:yahadatabsenameaaega
     username: springstudent
     password: springstudent
-#  sql:
-#    init:
-#      schema-locations:
-#        - temp.sql
+  sql:
+    init:
+      mode: always # it will initialize sql data, want to disable then set to never
+      schema-locations:
+        - classpath:schemas/user-schema.sql #optional:classpath:schemas if you add optional: then application will start if it gets error
+#      data-locations:
+#        - optional:classpath:data/user-data.sql
 #      data-locations:
 #        - demo.sql
 
 
 server:
-  #servlet:
-    #context-path: /lms
+  servlet:
+    context-path: /lms
   port: 8085
-
-
-
+  ssl:
+    key-store: C://Users//shubhavi//mykeys.jks
+    key-store-password: rootroot # either give this property or below property to enable tls
+    enabled: false
+#    key-password: rootroot
 management:
   endpoints:
     web:
@@ -35,15 +50,34 @@ management:
     port: 8086
 
 logging:
+  file:
+    path: C:\Users\shubhavi\Music
+#    name: lms.log
   level:
     com:
       ind:
-        lms: TRACE
+        lms: INFO
     org:
       springframework:
-        security: TRACE
-        web: TRACE
+        security: DEBUG
+        web: OFF
+    root: TRACE # make to info for full logging
 
 
-startup:
-  greeting: "Welcome to ${spring.application.name}."
+#startup:
+#  greeting: "Welcome to ${spring.application.name}."
+greeting: "Welcome to ${spring.application.name}."
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+logging:
+  level:
+    com:
+      ind:
+        lms: DEBUG
+    root: INFO

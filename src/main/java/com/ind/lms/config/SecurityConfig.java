@@ -9,35 +9,33 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @Slf4j
 public class SecurityConfig {
-    @Bean
+@Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 
     @Bean
     public UserDetailsService userDetailsService(@Autowired IUserRepository iUserRepository) {
-
-
-        return username -> {
-            UserDetails user = iUserRepository.findUserByUsername(username);
-            log.info("User : {}", user);
-            if (user != null) return user;
-            throw new UsernameNotFoundException("User '" + username + "' not found");
-        };
+            InMemoryUserDetailsManager userDetailsService = new InMemoryUserDetailsManager();
+            UserDetails user = User.withUsername("user").password("1234").build();
+            userDetailsService.createUser(user);
+            return userDetailsService;
     }
 
-    @Bean
+/*    @Bean
     public SecurityFilterChain securityFilterChain(@Autowired HttpSecurity http) throws Exception {
 
 
@@ -48,8 +46,10 @@ public class SecurityConfig {
                                 .requestMatchers("/student/**").access("hasAnyRole('USER')"))
                 .csrf(AbstractHttpConfigurer::disable);
 
+
         return http.build();
 
-    }
+    }*/
+
 
 }

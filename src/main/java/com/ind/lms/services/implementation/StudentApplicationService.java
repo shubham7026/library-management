@@ -10,9 +10,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Random;
 
 @Component
 @Slf4j
@@ -30,6 +32,7 @@ public class StudentApplicationService implements IStudentApplicationService {
             log.debug("Student already Exist");
             return studentFoundWIthEmail;
         }
+        student.setId((int)(Math.random()*100));
 
         Student  savedStudent = iStudentRepository.save(student);
         log.debug("Student saved with id : {}",student.getId());
@@ -53,7 +56,7 @@ public class StudentApplicationService implements IStudentApplicationService {
     @Override
     public List<Student> getAllStudents() {
         log.debug("Getting Students");
-        List<Student> students = iStudentRepository.findAll();
+        List<Student> students = new ArrayList<>(iStudentRepository.findAll());
         log.debug("Students found - {}",students);
         return students;
     }

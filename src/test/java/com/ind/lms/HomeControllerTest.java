@@ -1,6 +1,5 @@
 package com.ind.lms;
 
-import com.ind.lms.restcontroller.BookRestController;
 import com.ind.lms.restcontroller.HomeController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

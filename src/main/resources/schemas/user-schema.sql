@@ -3,7 +3,7 @@ USE `student_tracker`;
 
 CREATE TABLE if not exists user (
                         id int NOT NULL AUTO_INCREMENT,
-                        usernamevarchar(45) DEFAULT NULL,
+                        username varchar(45) DEFAULT NULL,
                         password varchar(45) DEFAULT NULL,
                         PRIMARY KEY (`id`)
 

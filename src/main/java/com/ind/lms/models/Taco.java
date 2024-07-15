@@ -1,7 +1,13 @@
 package com.ind.lms.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -9,11 +15,15 @@ import java.util.List;
 /**
  *
  */
-@Data
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 @Builder
 public class Taco {
-    private final String id;
-    private final String name;
-
-    private final List<Ingredient> ingredientList;
+    private  String id;
+    private  String name;
+    private  List<Ingredient> ingredientList;
 }

@@ -26,7 +26,7 @@ public class IConsumeKafkaService {
     /*@KafkaListener(topics = {"create_student"}, groupId = "1")
     public void consumeStudent(@Payload Object student, ConsumerRecord<String,Student> consumer){
 
-        *//*AtomicReference<Student> msgCons = new AtomicReference<>();
+        AtomicReference<Student> msgCons = new AtomicReference<>();
 
         AtomicReference<Student> student = null;
 
@@ -38,7 +38,7 @@ public class IConsumeKafkaService {
             System.out.println("Message received " + student);
         });
 
-        consumer.close();*//*
+        consumer.close();
 
         //log.info("Message consumed - {}",consumer.value());
         //Student student =(Student) consumer.value();
