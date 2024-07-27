@@ -18,14 +18,10 @@ import lombok.ToString;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long isbn;
-    int year;
-    int pages;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    int id;
     String title;
-    String  author;
-    String imageLink;
-    String country;
+    String  authorName;
+    String isbn;
     String language;
-    String link;
 }

@@ -8,8 +8,9 @@ import java.util.List;
 
 public interface IBookRepository extends JpaRepository<Book, Integer> {
 
-    List<Book> findBooksByCountry(String country);
-    int  countBooksByCountry(String country);
-    @Query(value = "select book.author from Book book where book.language ='sanskrit' ")
-    List<String> findByLanguageAndPublishedAfterYear(int year);
+    List<Book> findBooksByAuthorName(String authorName);
+    List<Book> findBooksByIsbn(String authorName);
+    //int  countBooksByCountry(String country);
+    //@Query(value = "select book.authorName from Book book where book.language ='sanskrit' ")
+    //List<String> findByLanguageAndPublishedAfterYear(int year);
 }

@@ -20,10 +20,9 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @Builder
 public class Taco {
     private  String id;
     private  String name;
-    private  List<Ingredient> ingredientList;
+    private  List<Ingredient> ingredients;
 }

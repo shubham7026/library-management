@@ -21,16 +21,16 @@ public class BookApplicationService implements IBookApplicationService {
     private final IBookRepository iBookRepository;
 
     @Override
-    public Book getBookByIsbn(int isbn) {
-        log.debug("Getting book by isbn : {}",isbn);
-        Optional<Book> bookOptional =  iBookRepository.findById(isbn);
+    public Book getBookById(int id) {
+        log.debug("Getting book by Id : {}",id);
+        Optional<Book> bookOptional =  iBookRepository.findById(id);
         AtomicReference<Book> book = new AtomicReference<>();
         bookOptional.ifPresentOrElse( books->{
                 book.set(books);
-                log.debug("Book found with isbn : {}, {}", isbn, books);
+                log.debug("Book found with Id : {}, {}", id, books);
         },() ->{
-            log.error("Book not found with id : {}",isbn);
-            throw new BookNotFoundException("Book not found with isbn : " + isbn);
+            log.error("Book not found with id : {}",id);
+            throw new BookNotFoundException("Book not found with id : " + id);
         });
         return book.get();
     }
@@ -47,17 +47,14 @@ public class BookApplicationService implements IBookApplicationService {
     public List<Book> getAllBooks() {
         log.debug("Fetching books from the database");
         log.debug("Total Books count - {}", iBookRepository.count());
-        log.debug("Total Books count - {}", iBookRepository.findByLanguageAndPublishedAfterYear(1999));
         List<Book> books = iBookRepository.findAll();
-        log.debug("books fetched from the database");
         return books;
     }
 
     @Override
-    public List<Book> getAllBooksByCountry( String country) {
-        log.debug("Fetching books from the database by country");
-        log.debug("Total Books count - {}", iBookRepository.countBooksByCountry(country));
-        List<Book> books = iBookRepository.findBooksByCountry(country);
+    public List<Book> getAllBooksByAuthorName( String authorName) {
+        log.debug("Fetching books from the database by authorName");
+        List<Book> books = iBookRepository.findBooksByAuthorName(authorName);
         log.debug("books fetched from the database");
         return books;
     }

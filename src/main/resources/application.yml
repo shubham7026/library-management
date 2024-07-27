@@ -1,6 +1,3 @@
-com:
-  lms:
-    demoProperty: demo
 spring:
   profiles:
     default: default
@@ -15,12 +12,12 @@ spring:
     generate-ddl: true # it generates Schema if true
   datasource:
 #    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/student_tracker
+    url: jdbc:mysql://localhost:3306/student_directory
     generate-unique-name: false # By default, the database name is randomly generated
     name: user # provided database name, since we are using mySQL so we dont need it will be used if using h2 db
     #jdbc:h2:mem:yahadatabsenameaaega
-    username: springstudent
-    password: springstudent
+    username: root
+    password: root
   sql:
     init:
       mode: always # it will initialize sql data, want to disable then set to never

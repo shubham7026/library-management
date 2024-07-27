@@ -17,7 +17,7 @@ class HomeControllerTest {
 
     @Test
     void testHomePage() throws Exception {
-        mockMvc.perform(get("/"))
+        mockMvc.perform(get("/lms/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("home"))
                 .andExpect(content().string(

@@ -1,9 +1,6 @@
 package com.ind.lms.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.http.HttpStatus;
 
 
@@ -11,6 +8,8 @@ import org.springframework.http.HttpStatus;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+
 public class ErrorResponse {
     String message ;
 }

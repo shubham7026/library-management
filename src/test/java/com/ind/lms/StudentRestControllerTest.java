@@ -2,7 +2,7 @@ package com.ind.lms;
 
 
 import com.ind.lms.entity.Student;
-import com.ind.lms.restcontroller.StudentRestController;
+import com.ind.lms.restcontroller.StudentController;
 import com.ind.lms.services.interfaces.IStudentApplicationService;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(StudentRestController.class)
+@WebMvcTest(StudentController.class)
 public class StudentRestControllerTest {
 
     @Autowired

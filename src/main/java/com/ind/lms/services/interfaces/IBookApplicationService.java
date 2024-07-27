@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 public interface IBookApplicationService {
-    Book getBookByIsbn(int isbn);
+    Book getBookById(int isbn);
     List<Book> addBooks(List<Book> books);
 
     List<Book> getAllBooks();
 
-    List<Book> getAllBooksByCountry(@PathVariable("country") String country);
+    List<Book> getAllBooksByAuthorName(@PathVariable("authorName") String authorName);
 }

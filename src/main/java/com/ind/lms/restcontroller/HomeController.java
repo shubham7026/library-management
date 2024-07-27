@@ -4,7 +4,9 @@ package com.ind.lms.restcontroller;
 import com.ind.lms.models.Ingredient;
 import com.ind.lms.models.Taco;
 import com.ind.lms.models.TacoOrder;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Slf4j
 @Controller
 @SessionAttributes("tacoOrder")
 
@@ -58,6 +60,7 @@ public class HomeController {
     }
     @GetMapping("/")
     public String home() {
-        return "home";
+        log.info("Inside: home");
+        return "design";
     }
 }

@@ -1,18 +1,12 @@
 package com.ind.lms.models;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@EqualsAndHashCode
+@RequiredArgsConstructor
 @Builder
 public class Ingredient {
     private final String id;

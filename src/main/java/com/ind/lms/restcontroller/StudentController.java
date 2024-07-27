@@ -2,7 +2,6 @@ package com.ind.lms.restcontroller;
 
 
 import com.ind.lms.customexceptions.StudentNotFoundException;
-import com.ind.lms.entity.Book;
 import com.ind.lms.entity.Student;
 import com.ind.lms.services.interfaces.IStudentApplicationService;
 import lombok.AllArgsConstructor;
@@ -18,16 +17,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 
-@RestController(value = "studentRestController")
-@RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}, consumes = MediaType.APPLICATION_JSON_VALUE)
+@RestController(value = "studentController")
+@RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
 @Slf4j
-public class StudentRestController {
+public class StudentController {
 
     private final IStudentApplicationService studentApplicationService;
 
@@ -45,14 +43,6 @@ public class StudentRestController {
             log.error("Student not found with Id - {}",id);
             throw new StudentNotFoundException("Student not found with Id - " + id, HttpStatus.NOT_FOUND);
         }
-
-        /*RestTemplate bookRestClient = new RestTemplate();
-        ResponseEntity<Book> response = bookRestClient.getForEntity("http://localhost:8085/lms/book/{id}", Book.class, 59);
-        System.out.println(response.getBody());
-        System.out.println(response.getHeaders());
-        System.out.println(response.getStatusCode());*/
-
-
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 

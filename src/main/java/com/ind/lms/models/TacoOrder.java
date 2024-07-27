@@ -16,7 +16,6 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @Builder
 public class TacoOrder {
     private String deliveryName;
@@ -28,4 +27,8 @@ public class TacoOrder {
     private String ccExpiration;
     private String ccCVV;
     private List<Taco> tacos;
+
+    void addTaco (Taco taco){
+        this.getTacos().add(taco);
+    }
 }
