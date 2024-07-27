@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -26,9 +27,9 @@ public class TacoOrder {
     private String ccNumber;
     private String ccExpiration;
     private String ccCVV;
-    private List<Taco> tacos;
+    private List<Taco> tacos = new ArrayList<>();
 
-    void addTaco (Taco taco){
-        this.getTacos().add(taco);
+    public void addTaco (Taco taco){
+        this.tacos.add(taco);
     }
 }

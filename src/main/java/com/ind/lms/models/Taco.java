@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,7 +23,6 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Taco {
-    private  String id;
     private  String name;
     private  List<Ingredient> ingredients;
 }

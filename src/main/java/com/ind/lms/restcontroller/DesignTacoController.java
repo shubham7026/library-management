@@ -6,12 +6,8 @@ import com.ind.lms.models.Taco;
 import com.ind.lms.models.TacoOrder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,17 +15,10 @@ import java.util.stream.Collectors;
 @Slf4j
 @Controller
 @SessionAttributes("tacoOrder")
+@RequestMapping("/design")
+public class DesignTacoController {
 
-public class HomeController {
 
-    @ModelAttribute("tacoOrder")
-    public TacoOrder tacoOrder(Model model){
-        return new TacoOrder();
-    }
-    @ModelAttribute("taco")
-    public Taco taco(Model model){
-        return new Taco();
-    }
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
         List<Ingredient> ingredients = Arrays.asList(
@@ -58,9 +47,28 @@ public class HomeController {
                 .filter(x -> x.getType().equals(type))
                 .collect(Collectors.toList());
     }
+
+    @ModelAttribute(name = "tacoOrder")
+    public TacoOrder tacoOrder(){
+        return new TacoOrder();
+    }
+    @ModelAttribute(name = "taco")
+    public Taco taco(){
+        return new Taco();
+    }
+
     @GetMapping("/")
     public String home() {
         log.info("Inside: home");
         return "design";
+    }
+
+    @PostMapping("/")
+    public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder ){
+        tacoOrder.addTaco(taco);
+        log.info("Taco - {}",taco);
+        log.info("TacoOrder - {}", tacoOrder);
+
+        return "redirect:/orders/current";
     }
 }
