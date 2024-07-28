@@ -1,19 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http:/ /www.w3.org/1999/xhtml"
-      xmlns:th="http:/ /www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Taco Cloud</title>
 </head>
 
 <body>
-<h1>Welcome to...</h1>
+<h1>Welcome to Taco Cloud Kitchen</h1>
 <img th:src="@{/images/TacoCloud.png}"/>
 
-<p th:text="${taco}"> message</p>
-<h3>Designate your wrap:</h3>
-<div th:each="ingredient : ${wrap}">
-    <input th:text="${ingredients}" type="checkbox" th:value="${ingredient.id}" />
-    <span th:text="${ingredient.name}">INGREDIENT</span><br/>
-</div>
+<a th:href="@{/design}" id="design">Design a taco</a>
 </body>
 </html>

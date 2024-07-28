@@ -2,6 +2,7 @@ package com.ind.lms.restcontroller;
 
 
 import com.ind.lms.models.TacoOrder;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -20,5 +21,17 @@ public class OrderController {
     @GetMapping("/current")
     public String orderForm() {
         return "orderForm";
+    }
+
+    @PostMapping
+    public String processOrder(@Valid TacoOrder order, Errors errors,
+                               SessionStatus sessionStatus) {
+        if (errors.hasErrors())
+            return "orderForm";
+
+        log.info("Order submitted: {}", order);
+        sessionStatus.setComplete();
+
+        return "redirect:/design";
     }
 }

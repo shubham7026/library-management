@@ -4,9 +4,12 @@ package com.ind.lms.restcontroller;
 import com.ind.lms.models.Ingredient;
 import com.ind.lms.models.Taco;
 import com.ind.lms.models.TacoOrder;
+import jakarta.validation.Valid;
+import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -57,14 +60,18 @@ public class DesignTacoController {
         return new Taco();
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String home() {
         log.info("Inside: home");
         return "design";
     }
 
-    @PostMapping("/")
-    public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder ){
+    @PostMapping
+    public String processTaco(@Valid Taco taco, Errors error, @ModelAttribute TacoOrder tacoOrder ){
+
+        if (error.hasErrors())
+            return "design";
+
         tacoOrder.addTaco(taco);
         log.info("Taco - {}",taco);
         log.info("TacoOrder - {}", tacoOrder);
