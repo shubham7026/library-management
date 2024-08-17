@@ -11,13 +11,13 @@ spring:
   jpa:
     generate-ddl: true # it generates Schema if true
   datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
+    #    driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/student_directory
     generate-unique-name: false # By default, the database name is randomly generated
     name: user # provided database name, since we are using mySQL so we dont need it will be used if using h2 db
     #jdbc:h2:mem:yahadatabsenameaaega
     username: root
-    password: root
+    password: Mysql@1112
   sql:
     init:
       mode: always # it will initialize sql data, want to disable then set to never
@@ -46,10 +46,10 @@ management:
   server:
     port: 8086
 
-logging:
-  file:
-    path: C:\Users\shubhavi\Music
-#    name: lms.log
+#logging:
+#  file:
+#    path: C:\Users\shubhavi\Music
+  #    name: lms.log
   level:
     com:
       ind:
@@ -78,3 +78,8 @@ logging:
       ind:
         lms: DEBUG
     root: INFO
+
+
+
+#kafka ~/kafka_2.13-3.0.0/bin/kafka-server-start.sh ~/kafka_2.13-3.0.0/config/server.properties
+#zookeeper ~/kafka_2.13-3.0.0/bin/zookeeper-server-start.sh ~/kafka_2.13-3.0.0/config/zookeeper.properties
