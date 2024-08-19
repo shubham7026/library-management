@@ -2,7 +2,9 @@ package com.ind.lms.restcontroller;
 
 
 import com.ind.lms.models.TacoOrder;
+import com.ind.lms.services.interfaces.ITacoOrderApplicationService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -16,7 +18,10 @@ import org.springframework.web.bind.support.SessionStatus;
 @Controller
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
+@RequiredArgsConstructor
 public class OrderController {
+
+    private final ITacoOrderApplicationService iTacoOrderApplicationService;
 
     @GetMapping("/current")
     public String orderForm() {
@@ -28,10 +33,10 @@ public class OrderController {
                                SessionStatus sessionStatus) {
         if (errors.hasErrors())
             return "orderForm";
-
-        log.info("Order submitted: {}", order);
         sessionStatus.setComplete();
 
+        iTacoOrderApplicationService.createOrder(order);
+        log.info("Order submitted: {}", order);
         return "redirect:/design";
     }
 }

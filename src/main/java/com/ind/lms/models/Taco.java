@@ -12,6 +12,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -25,6 +26,11 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Taco {
+
+
+    private Long id;
+    private Date createdAt;
+
     @NotNull
     @Size(min=5, message="Name must be at least 5 characters long")
     private  String name;

@@ -14,6 +14,7 @@ import lombok.ToString;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -23,6 +24,10 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class TacoOrder {
+
+    private Long id;
+    private Date placedAt;
+
     @NotBlank(message="Delivery name is required")
     private String deliveryName;
 

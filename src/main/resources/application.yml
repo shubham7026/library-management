@@ -23,6 +23,7 @@ spring:
       mode: always # it will initialize sql data, want to disable then set to never
       schema-locations:
         - classpath:schemas/user-schema.sql #optional:classpath:schemas if you add optional: then application will start if it gets error
+        - classpath:schemas/taco-schema.sql #optional:classpath:schemas if you add optional: then application will start if it gets error
 #      data-locations:
 #        - optional:classpath:data/user-data.sql
 #      data-locations:
