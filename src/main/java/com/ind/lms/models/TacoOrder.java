@@ -1,6 +1,8 @@
 package com.ind.lms.models;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -20,11 +22,13 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
+@Entity
 public class TacoOrder {
 
+    @Id
     private Long id;
     private Date placedAt;
 

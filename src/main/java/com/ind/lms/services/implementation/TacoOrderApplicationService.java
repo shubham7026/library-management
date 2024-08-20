@@ -14,6 +14,6 @@ public class TacoOrderApplicationService implements ITacoOrderApplicationService
 
     @Override
     public void createOrder(TacoOrder tacoOrder) {
-        orderRepository.submitOrder(tacoOrder);
+        orderRepository.save(tacoOrder);
     }
 }
